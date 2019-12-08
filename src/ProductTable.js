@@ -22,8 +22,8 @@ class ProductTable extends Component {
             rows.push (
                 <ProductRow 
                     product={product} 
-                    key={product.id} 
-                    onDestroy={this.handleDestroy}></ProductRow>
+                    key={product.productId}
+                    onDestroy={this.handleDestroy}/>
             )
         })
 
@@ -35,6 +35,7 @@ class ProductTable extends Component {
                             <th>Name</th>
                             <th>Category</th>
                             <th>Price</th>
+                            <th>In Stock</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
