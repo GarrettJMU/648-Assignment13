@@ -41,7 +41,12 @@ app.post('/product/create', (req, res) => {
   })
 })
 
-app.put('/product/update/:productId', (req, res) => res.send(req.params))
+app.put('/product/update/:productId', (req, res) => {
+  const { price, name, instock, category } = req.body
+  Product.updateOne({ productId: req.params.productId }, { price, name, instock, category }).then(result => {
+    res.send(result)
+  }).catch(err => console.error(`Failed to add review: ${err}`))
+})
 
 app.delete('/product/delete/:productId', (req, res) => {
   console.log(req.params)
