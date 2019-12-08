@@ -43,7 +43,12 @@ app.post('/product/create', (req, res) => {
 
 app.put('/product/update/:productId', (req, res) => {
   const { price, name, instock, category } = req.body
-  Product.updateOne({ productId: req.params.productId }, { price, name, instock, category }).then(result => {
+  Product.updateOne({ productId: req.params.productId }, {
+    price,
+    name,
+    instock,
+    category
+  }, { "upsert": false }).then(result => {
     res.send(result)
   }).catch(err => console.error(`Failed to add review: ${err}`))
 })
